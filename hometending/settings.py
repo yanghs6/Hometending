@@ -43,10 +43,6 @@ def get_secret(setting, secrets=secrets):
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'n83gtkfj$2978_3x@%24eapmc!njgnl)b7b!gle35t21222a(l'
-
-
 ######################
 
 
@@ -66,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'firstpage',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +80,7 @@ ROOT_URLCONF = 'hometending.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'basetemplates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,3 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
