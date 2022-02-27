@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block css %}
+div .col-12 {
+    border-radius: 4px;
+}
+div .register {
+    text-align: left;
+}
+div .bg-primary{
+    border-radius: 4px;
+}
+form {
+    margin: 1.5em auto;
+    width: 90%;
+}
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<div class="row">
+    <div class="col-sm-2 col-xs-1"></div>
+    <div id="main" class="col-sm-8 col-xs-10 p-3 text-center bg-primary text-white">
+        <h1 class="m-3">Login</h1>
+        {% if msg %}
+            <div class="row mt-5">
+                <div class="col-12 text-center bg-info p-2">
+                    {{msg}}
+                </div>
+            </div>
+        {% endif %}
+        <form method="POST" action="{% url 'account:login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username" class="m-2">사용자 아이디</label>
+                    <input type="text" class="form-control"  name="useremail" placeholder="사용자 아이디" >
+                </div>
+                <div class="form-group">
+                    <label for="password" class="m-2">비밀번호</label>
+                    <input type="password" class="form-control" name="password" placeholder="비밀번호" >
+                </div>
+                <button type="submit" class="btn btn-secondary m-3">로그인</button>
+            </form>
+            <div class="row">
+                <div class="col-8 text-center align-self-center">아직 회원이 아니신가요?</div>
+                <div class="col-4 register"><button type="button" class="btn btn-secondary" onclick="location.href='{% url 'account:signup' %}'">회원가입</button></div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-1"></div>
+    </div>
+{% endblock %}

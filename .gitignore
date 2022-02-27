@@ -1,0 +1,12 @@
+# pycache
+__pycache__/
+*.py[cod]
+
+# migration
+migrations/
+
+# db.sqlite3
+db.sqlite3
+
+# production secret key
+secrets.json
