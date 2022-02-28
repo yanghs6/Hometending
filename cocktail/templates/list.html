@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<div class="btn-group-vertical">
+    <button type="button" class="btn btn-light" onclick="location.href='/cocktail/recipes/';">Apple Martini 애플마티니</button>
+    <button type="button" class="btn btn-light">Apricot 애프리코트</button>
+    <button type="button" class="btn btn-light">B-52 비-52</button>
+    <button type="button" class="btn btn-light">Bacardi 바카디</button>
+    <button type="button" class="btn btn-light">Black Russian 블랙러시안</button>
+</div>
+
+{% endblock %}
+
