@@ -64,11 +64,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstpage',
     'cocktail',
+    'boardapp',
     'accountapp',
 ]
 
-# Add authentication to custom model
-AUTH_USER_MODEL = 'accountapp.HometendUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,7 +84,7 @@ ROOT_URLCONF = 'hometending.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'basetemplates'],
+        'DIRS': [BASE_DIR / 'basetemplates', BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,6 +99,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hometending.wsgi.application'
 
+# Add authentication to custom model
+AUTH_USER_MODEL = 'accountapp.HometendUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
