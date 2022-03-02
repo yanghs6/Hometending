@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for base in base_list %}
+    <li><a href="/cocktail/base/{{base.basesprite}}/">{{base.name}}</a></li>
+    {% endfor %}
+
+{% endblock %}
