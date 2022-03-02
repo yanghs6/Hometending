@@ -7,7 +7,7 @@ div {
 div .member {
     background-color: #fdfafd;
 }
-a {
+a .related-link {
     text-decoration: none;
     text-shadow: none;
     margin: 0em 1em 0em 0em;
@@ -23,8 +23,8 @@ a {
     <h5 class="mb-3 text-primary">{{people.name}}</h5>
     <p>역할: {{people.role}}</p>
     <div>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{people.githubid}}" class="text-black">Github <i class="bi bi-github"></i></a>
-        <a href="mailto:{{people.email}}" class="text-black">email <i class="bi bi-envelope-fill"></i></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{people.githubid}}" class="text-black related-link">Github <i class="bi bi-github"></i></a>
+        <a href="mailto:{{people.email}}" class="text-black">email <i class="bi bi-envelope-fill related-link"></i></a>
     </div>
 </div>
 {% endfor %}
