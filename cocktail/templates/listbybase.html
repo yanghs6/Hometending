@@ -3,11 +3,23 @@
 {% block content %}
 
 {% load static %}
-<h1>{{lbyb.name}}</h1>
-<div>
-{% for menu in lbyb %}
-    <li><a href="/cocktail/{{menu.id}}/">{{menu.name}}</a></li>
-    {% endfor %}
-</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th scope="col"><h2>'base_name'</h2></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for menu in lbyb %}
+  <tr class="table-info">
+      <th><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+      {% endfor %}
+
+  </tbody>
+</table>
+
 {% endblock %}
+
 
