@@ -56,6 +56,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'boardapp.apps.BoardappConfig',
+    'common.apps.CommonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,6 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'firstpage',
+
 ]
 
 MIDDLEWARE = [
@@ -80,7 +83,7 @@ ROOT_URLCONF = 'hometending.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'basetemplates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,3 +151,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+#로그인 성공 시 자동으로 이동할 URL
+LOGIN_REDIRECT_URL = 'http://localhost:8000/boardapp/'
+LOGOUT_REDIRECT_URL = 'http://localhost:8000/boardapp/'
