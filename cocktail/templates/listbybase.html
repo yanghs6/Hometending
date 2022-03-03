@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<h1>{{lbyb.name}}</h1>
+<div>
+{% for menu in lbyb %}
+    <li><a href="/cocktail/{{menu.id}}/">{{menu.name}}</a></li>
+    {% endfor %}
+</div>
+{% endblock %}
+
