@@ -71,7 +71,6 @@ INSTALLED_APPS = [
     'firstpage',
     'info',
     'cocktail',
-    # 'boardapp',
     'accountapp',
 ]
 
