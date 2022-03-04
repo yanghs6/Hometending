@@ -15,15 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from boardapp.views import base_views
 
 urlpatterns = [
-    # path('', include('info.urls')),
+    path('', include('info.urls')),
     path('admin/', admin.site.urls),
     path('firstpage/', include('firstpage.urls')),
     path('cocktail/', include('cocktail.urls')),
     path('boardapp/', include('boardapp.urls')),
-    path('account/', include('accountapp.urls')),
     path('common/', include('common.urls')),
-    path('', base_views.index, name='index'),  # '/' 에 해당되는 path
+    path('account/', include('accountapp.urls')),
+    path('info/', include('common.urls')),
 ]

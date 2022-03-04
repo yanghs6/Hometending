@@ -5,23 +5,34 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://bootswatch.com/5/vapor/bootstrap.min.css" crossorigin="anonymous">
+    {% comment %} <link rel="stylesheet" href="https://bootswatch.com/5/vapor/bootstrap.min.css" crossorigin="anonymous"> {% endcomment %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}"> {% endcomment %}
     <!-- pybo CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="https://bootswatch.com/5/vapor/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <style>
+        {% block css %}{% endblock %}
+    </style>
     <title>Hello, boardapp!</title>
 </head>
-<body>
+<body style="padding-top: 5em;">
 {% include "navbar.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
-{% block content %}
-{% endblock %}
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 <!-- jQuery JS -->
-<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+{% comment %} <script src="{% static 'jquery-3.6.0.min.js' %}"></script> {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
-<script src="{% static 'bootstrap.min.js' %}"></script>
+{% comment %} <script src="{% static 'bootstrap.min.js' %}"></script> {% endcomment %}
 <!-- 자바스크립트 Start -->
 {% block script %}
 {% endblock %}

@@ -4,10 +4,6 @@ from .models import HometendUser
 from django.contrib import auth
 
 # Create your views here.
-def login(request):
-    context = dict()
-    
-    return render(request, "login.html", context)
 
 def signup(request):
     res_data = None
@@ -29,8 +25,8 @@ def signup(request):
             
             res_data = {'msg': "회원가입이 완료되었습니다!"}
             
-            return render(request, 'login.html', res_data)
-        return render(request, 'signup.html', res_data)
+            return render(request, 'account/login.html', res_data)
+        return render(request, 'account/signup.html', res_data)
     elif request.method =='GET':
-        return render(request, 'signup.html', res_data)
+        return render(request, 'account/signup.html', res_data)
     # return render(request, "register.html", context)

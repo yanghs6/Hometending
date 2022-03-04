@@ -46,6 +46,10 @@ SECRET_KEY = get_secret("SECRET_KEY")
 ######################
 
 
+# Add authentication to custom model
+AUTH_USER_MODEL = 'accountapp.HometendUser'
+# AUTH_USER_MODEL = 'auth.User'
+# AUTH_USER_MODEL = 'auth.User.groups'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,7 +91,7 @@ ROOT_URLCONF = 'hometending.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'basetemplates', BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,8 +106,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hometending.wsgi.application'
 
-# Add authentication to custom model
-AUTH_USER_MODEL = 'accountapp.HometendUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -157,5 +159,5 @@ STATICFILES_DIRS = [
 ]
 
 #로그인 성공 시 자동으로 이동할 URL
-LOGIN_REDIRECT_URL = 'http://localhost:8000/boardapp/'
-LOGOUT_REDIRECT_URL = 'http://localhost:8000/boardapp/'
+LOGIN_REDIRECT_URL = 'http://localhost:8000/'
+LOGOUT_REDIRECT_URL = 'http://localhost:8000/'

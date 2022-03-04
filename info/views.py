@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'info/index.html')
 
 def about(reqeust):
     context = {'member':
@@ -14,4 +14,5 @@ def about(reqeust):
                 ]
               }
     
-    return render(reqeust, 'about.html', context)
+    # return render(reqeust, 'about.html', context)
+    return render(reqeust, 'info/about.html', context)
