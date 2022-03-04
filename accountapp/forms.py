@@ -4,4 +4,4 @@ from .models import HometendUser
 class HometendUserForm(UserCreationForm):
   class Meta:
     model = HometendUser
-    fields = ['email', 'username', 'password']
+    fields = ['email', 'username', 'first_name', 'password']
