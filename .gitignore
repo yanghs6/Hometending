@@ -190,18 +190,25 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+<<<<<<< HEAD
 # End of https://www.toptal.com/developers/gitignore/api/django,windows
 
 ### ETC ###
 # pycache
+=======
+# End of https://www.toptal.com/developers/gitignore/api/windows,jetbrains
+
+### ETC ###
+# Pycache
+>>>>>>> 7240cbd3214c03484e5f7eb4276214e06753133e
 __pycache__/
 *.py[cod]
 
-# migration
+# Migration
 migrations/
 
 # db.sqlite3
 db.sqlite3
 
-# production secret key
+# Production secret key
 secrets.json
