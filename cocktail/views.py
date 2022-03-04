@@ -34,7 +34,7 @@ def basesprite(request):
 
 def listbybase(request,base_name):
     lbyb=Recipe.objects.filter(basesprite=base_name)
-    context = {'lbyb': lbyb}
+    context = {'lbyb': lbyb,'base_name':base_name}
     return render(request, "listbybase.html", context)
 
 # Create your views here.
