@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
-
 {% block content %}
 {% load static %}
+
+<style>
+    	img {
+		width : 250px;
+		height : 250px;
+		margin : 10px;
+		padding : 10px;
+		background-color : white;
+		border : 2px solid black;
+	    box-shadow : 5px 5px 5px purple;
+	    text-align : center;
+	    }
+		div {
+	    text-align : center;
+	    }
+	    .n{
+	     display: flex;
+	     justify-content: space-around;
+	    }
+	    .t{
+	    width : 250px;
+		height : 20px;
+		color:white;
+		}
+</style>
+
 <div class="container my-3">
 
     <div class="row justify-content-between my-3">
@@ -14,20 +39,29 @@
             </div>
         </div>
     </div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-        <th scope="col"><h2>Cocktail List</h2></th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for menu in cocktail_list %}
-  <tr class="table-info">
-      <th><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
-      {% endfor %}
 
-  </tbody>
-</table>
+    <h2>Cocktail List</h2>
+
+
+    <div>
+        <p>
+            {% for menuset in cocktail_list %}
+        <p>
+        {% for menu in menuset %}
+        <a href="/cocktail/{{menu.id}}/" ><img src="/static/images/cocktail/{{menu.id}}.jpg"></a>
+        {% endfor %}
+    </p>
+        <div class="n">
+            {% for menu in menuset %}
+            <span class="t" >{{menu.name}}</span>
+            {% endfor %}
+        </div>
+        </p>
+        {% endfor %}
+    </div>
+
+
+
 </div>
 <form id="searchForm" method="get" action="{% url 'list' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
