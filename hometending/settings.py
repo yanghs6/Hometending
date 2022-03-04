@@ -56,6 +56,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'boardapp.apps.BoardappConfig',
+    'common.apps.CommonConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +67,7 @@ INSTALLED_APPS = [
     'firstpage',
     'info',
     'cocktail',
-    'boardapp',
+    # 'boardapp',
     'accountapp',
 ]
 
@@ -154,3 +156,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+#로그인 성공 시 자동으로 이동할 URL
+LOGIN_REDIRECT_URL = 'http://localhost:8000/boardapp/'
+LOGOUT_REDIRECT_URL = 'http://localhost:8000/boardapp/'
