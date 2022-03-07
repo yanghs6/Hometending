@@ -1,3 +1,23 @@
+<style>
+    audio::-webkit-media-controls-panel {
+        -webkit-justify-content: center;
+    }
+    audio::-webkit-media-controls {
+        color: white;
+    }
+    body:-webkit-full-page-media {
+        background-color: black;
+    }
+    audio {
+        height: 24px;
+        width: 200px;
+        border-radius: 16px;
+        background-color: black;
+    }
+    ::-webkit-media-controls-time-remaining-display {
+        display: none;
+    }
+</style>
 <!-- 내비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
 <!-- <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary"> -->
@@ -36,13 +56,17 @@
             <a class="nav-link" href="{% url 'account:logout' %}">로그아웃</a>
             {% else %}
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:login' %}">로그인</a>
+                <a class="nav-link" href="{% url 'account:login' %}">로그인</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:signup' %}">회원가입</a>
+                <a class="nav-link" href="{% url 'account:signup' %}">회원가입</a>
             </li>
             {% endif %}
+            <audio id="bgm" autoplay controls class="align-self-center mx-3" controlsList="nodownload noplaybackrate">
+                <source src="/static/audios/Dreaming Rain.mp3" type="audio/mp3">
+            </audio>
         </ul>
         </div>
     </div>
 </nav>
+<script src="/static/scripts/audio.js"></script>
