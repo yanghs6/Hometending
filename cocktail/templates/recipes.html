@@ -3,12 +3,16 @@
 {% block content %}
 
 {% load static %}
-<h1>{{recipe.name}}</h1>
+<style>
+        	img {
+        			height : 700px;
+	    text-align : center;
+	    }
+
+</style>
+
+<h3>{{recipe.name}}</h3>
 <div>
-    <p><i>글래스 종류: </i>{{recipe.glass}}</p>
-     <p><i>장식물: </i>{{recipe.garnish}}</p>
-    <p><i>칵테일 베이스: </i>{{recipe.basesprite}}</p>
-    <p><i>재료: </i>{{recipe.ingredient}}</p>
-    <p><i>기술: </i>{{recipe.technique}}</p>
+    <a><img src="/static/images/cocktail/{{recipe.id}}.png"></a>
 </div>
 {% endblock %}

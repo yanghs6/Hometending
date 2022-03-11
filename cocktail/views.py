@@ -20,8 +20,6 @@ def list(request):
     context = {'cocktail_alllist':cocktail_alllist,'cocktail_list':cocktail_list, 'kw': kw}
     return render(request, "list.html", context)
 
-
-
 def recipes(request,cocktail_id):
     recipe=Recipe.objects.get(id=cocktail_id)
     context = {'recipe': recipe}
