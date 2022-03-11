@@ -1,6 +1,8 @@
+from .views import base_views, question_views, answer_views, comment_views, vote_views
 from django.urls import path
 
-from .views import base_views, question_views, answer_views, comment_views, vote_views
+
+
 
 app_name = 'boardapp'
 
@@ -13,6 +15,7 @@ urlpatterns = [
     path('question/create/', question_views.question_create, name='question_create'),
     path('question/modify/<int:question_id>/', question_views.question_modify, name='question_modify'),
     path('question/delete/<int:question_id>/', question_views.question_delete, name='question_delete'),
+    path('question/photo/<int:question_id>/', question_views.question_photo, name='question_photo'),
 
     # answer_views.py
     path('answer/create/<int:question_id>/', answer_views.answer_create, name='answer_create'),
@@ -30,5 +33,6 @@ urlpatterns = [
     # vote_views.py
     path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
     path('vote/answer/<int:answer_id>/', vote_views.vote_answer, name='vote_answer'),
+
 ]
 

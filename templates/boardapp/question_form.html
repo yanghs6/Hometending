@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">글쓰기</h5>
-    <form method="post" class="post-form my-3">
+    <form method="post" class="post-form my-3" enctype="multipart/form-data">
         {% csrf_token %}
         <!-- 오류 표시 Start -->
         {% if form.errors %}
@@ -26,8 +25,10 @@
         <label for="content">내용</label>
         <textarea class="form-control" name="content" id="content"
                   rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
-        </div>
+        <input type="file" class="btn btn-primary" name="imgfile" id="imgfile" value="{{ form.imgfile.value | default_if_none:''}}">
         <button type="submit" class="btn btn-primary">저장하기</button>
+    </div>
     </form>
+    </div>
 </div>
 {% endblock %}

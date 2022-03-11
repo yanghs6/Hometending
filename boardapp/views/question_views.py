@@ -7,7 +7,7 @@ from ..forms import QuestionForm
 from ..models import Question
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_create(request):
     """
     boardapp 질문 등록
@@ -19,6 +19,7 @@ def question_create(request):
             question = form.save(commit=False)
             question.author = request.user
             question.create_date = timezone.now()
+            question.imgfile = request.FILES["imgfile"]
             question.save()
             return redirect('boardapp:index')
     else:
@@ -26,7 +27,7 @@ def question_create(request):
     context = {'form': form}
     return render(request, 'boardapp/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_modify(request, question_id):
     """
     boardapp 질문 수정
@@ -49,7 +50,7 @@ def question_modify(request, question_id):
     context = {'form': form}
     return render(request, 'boardapp/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_delete(request, question_id):
     """
     boardapp 질문 삭제
@@ -60,3 +61,21 @@ def question_delete(request, question_id):
         return redirect('boardapp:detail', question_id=question.id)
     question.delete()
     return redirect('boardapp:index')
+
+@login_required(login_url='account:login')
+def question_photo(request):
+    """
+    boardapp 사진 등록
+    """
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        img = request.FILES["imgfile"]
+        question = Question(
+            imgfile=img
+        )
+        question.save()
+        return redirect('boardapp:index')
+    else:
+        form = QuestionForm()
+    context = {'form': form}
+    return render(request, 'boardapp/question_form.html', context)

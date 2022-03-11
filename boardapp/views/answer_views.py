@@ -6,7 +6,7 @@ from django.utils import timezone
 from ..forms import AnswerForm
 from ..models import Question, Answer
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def answer_create(request, question_id):
     """
     boardapp 답변 등록
@@ -29,7 +29,7 @@ def answer_create(request, question_id):
     return render(request, 'boardapp/question_detail.html', context)
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def answer_modify(request, answer_id):
     """
     boardapp 답변 수정
@@ -53,7 +53,7 @@ def answer_modify(request, answer_id):
     context = {'answer' : answer, 'form': form}
     return render(request, 'boardapp/answer_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def answer_delete(request, answer_id):
     """
     boardapp 답변 삭제

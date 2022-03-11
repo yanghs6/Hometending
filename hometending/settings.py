@@ -14,6 +14,10 @@ import os, json
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -156,5 +160,13 @@ STATICFILES_DIRS = [
 ]
 
 #로그인 성공 시 자동으로 이동할 URL
-LOGIN_REDIRECT_URL = 'http://localhost:8000/'
-LOGOUT_REDIRECT_URL = 'http://localhost:8000/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
