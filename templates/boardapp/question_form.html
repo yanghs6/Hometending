@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
+
+{% block css %}
+#message {
+    margin: 0px auto;
+    width: 90%;
+    border-radius: 4px;
+    color: white;
+}
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">글쓰기</h5>
@@ -27,7 +37,12 @@
                   rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         <input type="file" class="btn btn-primary" name="imgfile" id="imgfile" value="{{ form.imgfile.value | default_if_none:''}}">
         <button type="submit" class="btn btn-primary">저장하기</button>
+        {% if message %}
+        <div id="message" class="text-center bg-info p-2 mt-2">
+            {{message}}
+        </div>
     </div>
+    {% endif %}
     </form>
     </div>
 </div>
