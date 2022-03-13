@@ -52,8 +52,9 @@ SECRET_KEY = get_secret("SECRET_KEY")
 
 # Add authentication to custom model
 AUTH_USER_MODEL = 'accountapp.HometendUser'
-# AUTH_USER_MODEL = 'auth.User'
-# AUTH_USER_MODEL = 'auth.User.groups'
+
+# Pythoneverywhere deploy setting
+ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
