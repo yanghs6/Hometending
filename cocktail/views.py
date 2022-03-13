@@ -3,41 +3,22 @@ from .models import Recipe
 from django.db.models import Q
 
 
-def l(request):
-    # 조회
-    cocktail_list = Recipe.objects.order_by('pk')
-    kw = request.GET.get('kw', '')  # 검색어
-    # 검색
-    if kw:
-        cocktail_list = cocktail_list.filter(
-            Q(name__icontains=kw) |  # 이름검색
-            Q(basesprite__icontains=kw) |  # 베이스검색
-            Q(ingredient__icontains=kw) |  # 재료검색
-            Q(garnish__icontains=kw)  #가니시검색
-        ).distinct()
-
-    context = {'cocktail_list':cocktail_list, 'kw': kw}
-    # return render(request, "cocktail/basesprite.html", context)
-    return render(request, "cocktail/l.html", context)
-
 def list(request):
     # 조회
-    cocktail_list = Recipe.objects.order_by('pk')
+    cocktail_alllist = Recipe.objects.order_by('pk')
     kw = request.GET.get('kw', '')  # 검색어
     # 검색
     if kw:
-        cocktail_list = cocktail_list.filter(
+        cocktail_alllist = cocktail_alllist.filter(
             Q(name__icontains=kw) |  # 이름검색
             Q(basesprite__icontains=kw) |  # 베이스검색
             Q(ingredient__icontains=kw) |  # 재료검색
             Q(garnish__icontains=kw)  #가니시검색
         ).distinct()
-
+    n=4
+    cocktail_list = [cocktail_alllist[i * n:(i + 1) * n] for i in range((len(cocktail_alllist) + n - 1) // n)]
     context = {'cocktail_list':cocktail_list, 'kw': kw}
-    # return render(request, "cocktail/basesprite.html", context)
     return render(request, "cocktail/list.html", context)
-
-
 
 def recipes(request,cocktail_id):
     recipe=Recipe.objects.get(id=cocktail_id)
@@ -51,7 +32,7 @@ def basesprite(request):
 
 def listbybase(request,base_name):
     lbyb=Recipe.objects.filter(basesprite=base_name)
-    context = {'lbyb': lbyb}
+    context = {'lbyb': lbyb,'base_name':base_name}
     return render(request, "cocktail/listbybase.html", context)
 
 # Create your views here.
