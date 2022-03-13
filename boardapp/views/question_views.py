@@ -1,13 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.forms import ImageField
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from PIL import Image, UnidentifiedImageError
 
 from ..forms import QuestionForm
 from ..models import Question
 
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_create(request):
     """
     boardapp 질문 등록
@@ -19,6 +21,9 @@ def question_create(request):
             question = form.save(commit=False)
             question.author = request.user
             question.create_date = timezone.now()
+            question.imgfile = request.FILES["imgfile"]
+            ImageField.validate
+            
             question.save()
             return redirect('boardapp:index')
     else:
@@ -26,7 +31,7 @@ def question_create(request):
     context = {'form': form}
     return render(request, 'boardapp/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_modify(request, question_id):
     """
     boardapp 질문 수정
@@ -42,14 +47,26 @@ def question_modify(request, question_id):
             question = form.save(commit=False)
             question.author = request.user
             question.modify_date = timezone.now()
-            question.save()
-            return redirect('boardapp:detail', question_id=question.id)
+            question.imgfile = request.FILES["imgfile"]
+            
+            # 이미지 파일 확인
+            try:
+                tmp_img = Image.open(question.imgfile)
+                tmp_img.verify()
+            except:
+                message = "이미지 파일이 아닙니다. 올바른 파일을 입력해주세요."
+                context = {'form': form, 'message': message}
+                return render(request, 'boardapp/question_form.html', context)
+            else:
+                question.save()
+                return redirect('boardapp:detail', question_id=question.id)
     else:
         form = QuestionForm(instance=question)
+        
     context = {'form': form}
     return render(request, 'boardapp/question_form.html', context)
 
-@login_required(login_url='common:login')
+@login_required(login_url='account:login')
 def question_delete(request, question_id):
     """
     boardapp 질문 삭제
@@ -60,3 +77,21 @@ def question_delete(request, question_id):
         return redirect('boardapp:detail', question_id=question.id)
     question.delete()
     return redirect('boardapp:index')
+
+@login_required(login_url='account:login')
+def question_photo(request):
+    """
+    boardapp 사진 등록
+    """
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        img = request.FILES["imgfile"]
+        question = Question(
+            imgfile=img
+        )
+        question.save()
+        return redirect('boardapp:index')
+    else:
+        form = QuestionForm()
+    context = {'form': form}
+    return render(request, 'boardapp/question_form.html', context)
