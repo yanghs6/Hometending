@@ -1,18 +1,25 @@
 
 {% extends 'base.html' %}
 
+<style>
+{% block css %}
+h2 {
+  color: white;
+  text-align : center;
+}
+img {
+  width : 200px;
+  height : 200px;
+  margin : 10px;
+  padding : 10px;
+  background-color : white;
+    text-align : center;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 {% load static %}
-<style>
-            	img {
-		width : 200px;
-		height : 200px;
-		margin : 10px;
-		padding : 10px;
-		background-color : white;
-	    text-align : center;
-	    }
-</style>
 
 <table class="table table-hover">
   <thead>

@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
+{% block css %}
+h3 {
+	color: white;
+	text-align : center;
+}
+img {
+	height : 700px;
+}
+#recipe_img {
+	text-align : center;
+}
+{% endblock %}
+
 {% block content %}
 
 {% load static %}
-<style>
-        	img {
-        			height : 700px;
-	    text-align : center;
-	    }
-
-</style>
 
 <h3>{{recipe.name}}</h3>
-<div>
+<div id="recipe_img">
     <a><img src="/static/images/cocktail/{{recipe.id}}.png"></a>
 </div>
 {% endblock %}

@@ -4,14 +4,20 @@
 
 <style>
     img {
-		width : 250px;
-		height : 250px;
-		margin : 10px;
-		padding : 10px;
-		background-color : white;
-		border : 2px solid black;
-	    box-shadow : 4px 4px 4px magenta;
-	    text-align : center;
+        margin : 10px;
+        padding : 10px;
+        width: 15vw;
+        height: 15vw;
+        background-color : white;
+        border : 2px solid black;
+        box-shadow : 4px 4px 4px magenta;
+        text-align : center;
+    }
+    @media (max-width: 767px) { 
+        img {
+            width: 70vw;
+            height: 70vw;
+        }
     }
     div {
 	    text-align : center;
@@ -48,7 +54,7 @@
     {% for menuset in cocktail_list %}
     <div class="row">
         {% for menu in menuset %}
-        <div class="n col-3 align-self-center my-3">
+        <div class="n col-md-3 col-sm-12 align-self-center my-3">
             <a href="/cocktail/{{menu.id}}/" ><img src="/static/images/cocktail/{{menu.id}}.jpg"></a>
             <span class="t align-self-center" >{{menu.name}}</span>
         </div>
