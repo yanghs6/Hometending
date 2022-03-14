@@ -17,6 +17,13 @@
     ::-webkit-media-controls-time-remaining-display {
         display: none;
     }
+    #username {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-weight: bold;
+        margin-right: 1rem;
+    }
 </style>
 <!-- 내비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
@@ -44,7 +51,7 @@
         </ul>
         <ul class="navbar-nav ms-md-auto">
             {% if user.is_authenticated %}
-            <div class="font-weight-bold text-white align-self-center mx-3">{{ user.first_name }}</div>
+            <div id="username" class="font-weight-bold text-white">{{ user.first_name }}</div>
             <a class="nav-link" href="{% url 'account:logout' %}">로그아웃</a>
             {% else %}
             <li class="nav-item">
