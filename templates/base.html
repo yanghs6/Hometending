@@ -13,11 +13,15 @@
     <link rel="stylesheet" href="https://bootswatch.com/5/vapor/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <style>
+        body {
+            padding-top: 5em;
+            min-height: 110vh;
+        }
         {% block css %}{% endblock %}
     </style>
     <title>Hello, boardapp!</title>
 </head>
-<body style="padding-top: 5em;">
+<body>
 {% include "navbar.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <div class="container">
