@@ -24,7 +24,12 @@ a .related-link {
 {% for people in member %}
 <div class="m-3 p-4 text-primary member">
     <h5 class="mb-3 text-primary">{{people.name}}</h5>
-    <p>역할: {{people.role}}</p>
+    <div class="mb-3">
+        역할
+        {% for each_role in people.role %}
+        <li>{{each_role}}</li>
+        {% endfor %}
+    </div>
     <div>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{people.githubid}}" class="text-black related-link">Github <i class="bi bi-github"></i></a>
         <a href="mailto:{{people.email}}" class="text-black">email <i class="bi bi-envelope-fill related-link"></i></a>
