@@ -5,12 +5,15 @@
 {% load static %}
 <style>
         	img {
-		width : 200px;
-		height : 200px;
+		height : 180px;
 		margin : 10px;
 		padding : 10px;
 		background-color : white;
 	    text-align : center;
+	    }
+	    a{
+	    text-align : center;
+
 	    }
 	    .n{
 	    width : 1000px;
@@ -22,13 +25,14 @@
 <table class="table table-hover">
   <thead>
     <tr>
-        <th scope="col"><h2>{{base_name}}</h2></th>
+        <th scope="col"><h3>{{base_name}}</h3></th>
     </tr>
   </thead>
   <tbody>
   {% for menu in lbyb %}
   <tr class="table-info">
-      <th><img src="/static/images/cocktail/{{menu.id}}.jpg"><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+      <th><img src="/static/images/cocktail/{{menu.id}}.jpg"></th>
+         <th> <a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
       {% endfor %}
   </tbody>
 </table>
