@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block css %}
-h2 {
+h3 {
   color: white;
   text-align : center;
 }
@@ -12,8 +12,8 @@ img {
   background-color : white;
   text-align : center;
 }
-a{
-  text-align : center;
+td{
+  vertical-align: middle;
 }
 {% endblock %}
 
@@ -25,16 +25,16 @@ a{
 <table class="table table-hover">
   <thead>
     <tr>
-        <th scope="col"><h3>{{base_name}}</h3></th>
+      <th colspan="2"><h3>{{base_name}}</h3></th>
     </tr>
   </thead>
   <tbody>
-  {% for menu in lbyb %}
-  <tr class="table-info">
-    <th><img src="/static/images/cocktail/{{menu.id}}.jpg"></th>
-    <th> <a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
-  </tr>
-  {% endfor %}
+    {% for menu in lbyb %}
+    <tr class="table-info">
+      <td><img src="/static/images/cocktail/{{menu.id}}.jpg"></th>
+      <td><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
