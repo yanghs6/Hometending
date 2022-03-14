@@ -14,6 +14,10 @@ import os, json
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,25 +50,28 @@ SECRET_KEY = get_secret("SECRET_KEY")
 ######################
 
 
+# Add authentication to custom model
+AUTH_USER_MODEL = 'accountapp.HometendUser'
+
+# Pythoneverywhere deploy setting
+ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'boardapp.apps.BoardappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'firstpage',
+    'info',
     'cocktail',
-    'boardapp',
     'accountapp',
 ]
 
@@ -84,7 +91,7 @@ ROOT_URLCONF = 'hometending.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'basetemplates', BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,8 +106,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hometending.wsgi.application'
 
-# Add authentication to custom model
-AUTH_USER_MODEL = 'accountapp.HometendUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -148,8 +153,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+#로그인 성공 시 자동으로 이동할 URL
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

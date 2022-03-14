@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block css %}
+div .col-12 {
+    border-radius: 4px;
+}
+div .register {
+    text-align: left;
+}
+div .bg-primary{
+    border-radius: 4px;
+}
+form {
+    margin: 1.5em auto;
+    width: 90%;
+}
+#error {
+    margin: 0px auto;
+    width: 90%;
+}
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+{% if msg  %}
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>{{msg}}</h1>
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-sm-2 col-xs-1"></div>
+        <div class="col-sm-8 col-xs-10 p-3 text-center bg-primary text-white">
+            <h1 class="m-3">Sign Up</h1>
+            {% if error %}
+                <div id="error" class="col-12 text-center bg-info p-2">
+                    {{error}}
+                </div>
+            {% endif %}
+            <form method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username" class="m-2">아이디(이메일)를 입력해주세요.</label>
+                    <input type="email" class="form-control"  name="useremail" placeholder="사용자 아이디" >
+                </div>
+                <div class="form-group">
+                    <label for="first_name" class="m-2">닉네임을 입력해주세요. (최대 8자)</label>
+                    <input type="text" class="form-control" placeholder="닉네임" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="m-2">비밀번호</label>
+                    <input type="password" class="form-control" placeholder="비밀번호" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="re-password" class="m-2">비밀번호 확인</label>
+                    <input type="password" class="form-control" placeholder="비밀번호 확인" name="re-password" required>
+                </div>
+                <button type="submit" class="btn btn-secondary m-3">가입하기</button>
+            </form>
+        </div>
+        <div class="col-md-2 col-xs-1"></div>
+    </div>
+{% endif %}
+{% endblock %}

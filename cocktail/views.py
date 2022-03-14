@@ -17,23 +17,23 @@ def list(request):
         ).distinct()
     n=4
     cocktail_list = [cocktail_alllist[i * n:(i + 1) * n] for i in range((len(cocktail_alllist) + n - 1) // n)]
-    context = {'cocktail_alllist':cocktail_alllist,'cocktail_list':cocktail_list, 'kw': kw}
-    return render(request, "list.html", context)
+    context = {'cocktail_list':cocktail_list, 'kw': kw}
+    return render(request, "cocktail/list.html", context)
 
 def recipes(request,cocktail_id):
     recipe=Recipe.objects.get(id=cocktail_id)
     context = {'recipe': recipe}
-    return render(request, "recipes.html", context)
+    return render(request, "cocktail/recipes.html", context)
 
 def basesprite(request):
     base_list=Recipe.objects.order_by('basesprite').values('basesprite').distinct()
     context = {'base_list': base_list}
-    return render(request, "basesprite.html", context)
+    return render(request, "cocktail/basesprite.html", context)
 
 def listbybase(request,base_name):
     lbyb=Recipe.objects.filter(basesprite=base_name)
     context = {'lbyb': lbyb,'base_name':base_name}
-    return render(request, "listbybase.html", context)
+    return render(request, "cocktail/listbybase.html", context)
 
 # Create your views here.
 

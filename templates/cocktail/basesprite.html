@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+<style>
+{% block css %}
+h2 {
+  color: white;
+  text-align : center;
+}
+img {
+  width : 200px;
+  height : 200px;
+  margin : 10px;
+  padding : 10px;
+  background-color : white;
+    text-align : center;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th scope="col"><h2>Base List</h2></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for b in base_list %}
+  <tr class="table-info">
+      <th><img src="/static/images/cocktail/{{b.basesprite}}.jpg"><a href="/cocktail/basesprite/{{b.basesprite}}/"style="color: white;">{{b.basesprite}}</a></th>
+      {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
