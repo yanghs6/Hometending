@@ -5,6 +5,16 @@ h2 {
   color: white;
   text-align : center;
 }
+img {
+  height : 180px;
+  margin : 10px;
+  padding : 10px;
+  background-color : white;
+  text-align : center;
+}
+a{
+  text-align : center;
+}
 {% endblock %}
 
 {% block content %}
@@ -15,15 +25,16 @@ h2 {
 <table class="table table-hover">
   <thead>
     <tr>
-        <th scope="col"><h2>{{base_name}}</h2></th>
+        <th scope="col"><h3>{{base_name}}</h3></th>
     </tr>
   </thead>
   <tbody>
   {% for menu in lbyb %}
   <tr class="table-info">
-      <th><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
-      {% endfor %}
-
+    <th><img src="/static/images/cocktail/{{menu.id}}.jpg"></th>
+    <th> <a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+  </tr>
+  {% endfor %}
   </tbody>
 </table>
 
