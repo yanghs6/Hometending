@@ -54,20 +54,9 @@
     {% for menuset in cocktail_list %}
     <div class="row">
         {% for menu in menuset %}
-<<<<<<< HEAD:cocktail/templates/list.html
-        <a href="/cocktail/{{menu.id}}/" ><img src="/static/images/cocktail/{{menu.id}}.jpg"></a>
-
-        {% endfor %}
-    </p>
-        <div class="n">
-            {% for menu in menuset %}
-            <span class="t" >{{menu.name}}</span>
-            {% endfor %}
-=======
         <div class="n col-md-3 col-sm-12 align-self-center my-3">
-            <a href="/cocktail/{{menu.id}}/" ><img src="/static/images/cocktail/{{menu.id}}.jpg"></a>
-            <span class="t align-self-center" >{{menu.name}}</span>
->>>>>>> e08bda6b7e7b3d7f09da166aa5f983f3b00cb3c4:templates/cocktail/list.html
+        <a href="/cocktail/{{menu.id}}/" ><img src="/static/images/cocktail/{{menu.id}}.jpg"></a>
+        <span class="t align-self-center" >{{menu.name}}</span>
         </div>
         {% endfor %}
     </div>

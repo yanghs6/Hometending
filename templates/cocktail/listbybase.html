@@ -5,6 +5,16 @@ h2 {
   color: white;
   text-align : center;
 }
+
+img {
+  width : 200px;
+  height : 200px;
+  margin : 10px;
+  padding : 10px;
+  background-color : white;
+    text-align : center;
+}
+
 {% endblock %}
 
 {% block content %}
@@ -21,8 +31,9 @@ h2 {
   <tbody>
   {% for menu in lbyb %}
   <tr class="table-info">
-      <th><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+      <th><img src="/static/images/cocktail/{{menu.id}}.jpg"><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
       {% endfor %}
+
 
   </tbody>
 </table>
