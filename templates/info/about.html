@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block css %}
+h2 {
+    color: white;
+    text-align : center;
+}
 div {
     border-radius: 4px;
 }
@@ -16,8 +20,7 @@ a .related-link {
 
 {% block content %}
 {% load static %}
-<h2>소개화면입니다.</h2>
-<h3>구성원</h3>
+<h2>About</h2>
 {% for people in member %}
 <div class="m-3 p-4 text-primary member">
     <h5 class="mb-3 text-primary">{{people.name}}</h5>

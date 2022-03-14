@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
+{% block css %}
+img {
+    width: 100%;
+}
+{% endblock %}
+
 {% block content %}
 
 {% load static %}
-<h2>시작화면입니다.</h2>
-<p>환영합니다.</p><hr>
+<img src="/static/images/index.png">
 
 {% endblock %}

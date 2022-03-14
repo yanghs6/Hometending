@@ -34,10 +34,16 @@ bgm.onended = () => {
 
 window.onpagehide = () => {
     setCookie('time', bgm.currentTime, 300);
-    console.log("전환")
+    setCookie('paused', bgm.paused, 300);
 }
 
 window.onbeforeunload = () => {
     setCookie('time', bgm.currentTime, 300);
-    console.log("새로")
+    setCookie('paused', bgm.paused, 300);
+}
+
+window.onload = () => {
+    if (JSON.parse(getCookie('paused')) == false) {
+        bgm.play();
+    }
 }
