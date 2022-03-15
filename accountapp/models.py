@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractUser
 
 
 class HometendUser(AbstractUser):
-    """프로젝트 유저 모델
+    """
+    프로젝트 유저 모델
     
     AbstractBaseUser Model을 상속받아 유저 모델 재정의
     

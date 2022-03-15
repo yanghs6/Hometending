@@ -3,7 +3,9 @@ from .models import HometendUser
 
 
 def signup(request):
-    """HometendUser의 회원가입 view
+    """
+    모델 HometendUser의 회원가입 view
+    
     이메일, 유저닉네임, 패스워드를 받아 회원가입
     """
     res_data = None

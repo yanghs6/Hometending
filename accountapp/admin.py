@@ -3,7 +3,8 @@ from .models import *
 
 
 class HometendAdmin(admin.ModelAdmin):
-    """모델 HometendUser의 admin
+    """
+    모델 HometendUser의 admin
     
     Attributes:
         search_fields: username, first_name, email, date_joined, last_login
