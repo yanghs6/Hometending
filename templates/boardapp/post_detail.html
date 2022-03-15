@@ -55,7 +55,7 @@
                         <div class="comment py-2 text-muted">
                             <span style="white-space: pre-line;">{{ comment.content }}</span>
                             <span>
-                                - {{ comment.author }}, {{ comment.create_date }}
+                                - {{ comment.author.first_name }}, {{ comment.create_date }}
                                 {% if comment.modify_date %}
                                 (수정:{{ comment.modify_date }})
                                 {% endif %}
