@@ -4,6 +4,9 @@ from django.db.models import Q
 
 
 def list(request):
+    """
+    칵테일 리스트
+    """
     # 조회
     cocktail_alllist = Cocktail.objects.order_by('pk')
     kw = request.GET.get('kw', '')  # 검색어
@@ -21,19 +24,25 @@ def list(request):
     return render(request, "cocktail/list.html", context)
 
 def cocktails(request,cocktail_id):
+    """
+    칵테일 상세보기
+    """
     cocktail=Cocktail.objects.get(id=cocktail_id)
     context = {'cocktail': cocktail}
     return render(request, "cocktail/cocktails.html", context)
 
 def basesprite(request):
+    """
+    베이스별 칵테일 리스트
+    """
     base_list=Cocktail.objects.order_by('basesprite').values('basesprite').distinct()
     context = {'base_list': base_list}
     return render(request, "cocktail/basesprite.html", context)
 
 def listbybase(request,base_name):
+    """
+    베이스 선택 후 칵테일 리스트
+    """
     lbyb=Cocktail.objects.filter(basesprite=base_name)
     context = {'lbyb': lbyb,'base_name':base_name}
     return render(request, "cocktail/listbybase.html", context)
-
-# Create your views here.
-
