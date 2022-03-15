@@ -20,12 +20,22 @@ getCookie = (cookie_name) => {
             return unescape(y); // unescape로 디코딩 후 값 리턴
         }
     }
-    return "0";
+    return "error";
 }
 
 const bgm = document.getElementById("bgm");
-bgm.currentTime = parseInt(getCookie('time'), 10) + 0.5;
-bgm.volume = 0.2;
+
+if (getCookie('time') == 'error'){
+    bgm.currentTime = 0;
+}else{
+    bgm.currentTime = parseInt(getCookie('time'), 10) + 0.5;
+}
+
+if (getCookie('volume') == 'error'){
+    bgm.volume = 0.2;
+}else{
+    bgm.volume = getCookie('volume');
+} 
 
 bgm.onended = () => {
     bgm.currentTime = 0;
@@ -35,11 +45,13 @@ bgm.onended = () => {
 window.onpagehide = () => {
     setCookie('time', bgm.currentTime, 300);
     setCookie('paused', bgm.paused, 300);
+    setCookie('volume', bgm.volume, 300);
 }
 
 window.onbeforeunload = () => {
     setCookie('time', bgm.currentTime, 300);
     setCookie('paused', bgm.paused, 300);
+    setCookie('volume', bgm.volume, 300);
 }
 
 window.onload = () => {
