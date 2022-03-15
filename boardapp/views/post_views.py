@@ -21,8 +21,9 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.create_date = timezone.now()
-            post.imgfile = request.FILES["imgfile"]
-            ImageField.validate
+            
+            if 'imgfile' in request.FILES:
+                post.imgfile = request.FILES["imgfile"]
             
             post.save()
             return redirect('boardapp:index')
