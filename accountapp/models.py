@@ -10,7 +10,6 @@ class HometendUser(AbstractUser):
     
     Attributes:
         star(int): 임시
-        
     """
     star = models.IntegerField(default=0)
     
