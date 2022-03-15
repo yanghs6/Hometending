@@ -15,7 +15,7 @@ def list(request):
         cocktail_alllist = cocktail_alllist.filter(
             Q(name__icontains=kw) |  # 이름검색
             Q(basesprite__icontains=kw) |  # 베이스검색
-            Q(ingredient__icontains=kw) |  # 재료검색
+            Q(recipe__icontains=kw) |  # 재료검색
             Q(garnish__icontains=kw)  #가니시검색
         ).distinct()
     n=4
