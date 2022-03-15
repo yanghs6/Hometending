@@ -1,11 +1,11 @@
 from django import forms
-from boardapp.models import Question, Answer, Comment
+from boardapp.models import Post, Answer, Comment
 
 
 
-class QuestionForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Question
+        model = Post
         fields = ['subject', 'content', 'imgfile']
         labels = {
             'subject': '제목',

@@ -20,7 +20,7 @@ class candidate(models.Model):
         return "{} -- {}".format(self.full_name,self.position)
 
 
-class Question(models.Model):
+class Post(models.Model):
     # author = models.ForeignKey(User, on_delete=models.CASCADE,
     author = models.ForeignKey(HometendUser, on_delete=models.CASCADE,
                                related_name='author_question')
@@ -40,7 +40,7 @@ class Answer(models.Model):
     # author = models.ForeignKey(User, on_delete=models.CASCADE,
     author = models.ForeignKey(HometendUser, on_delete=models.CASCADE,
                                related_name='author_answer')
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
@@ -54,5 +54,5 @@ class Comment(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
-    question = models.ForeignKey(Question, null=True, blank=True, on_delete=models.CASCADE)
+    question = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, null=True, blank=True, on_delete=models.CASCADE)

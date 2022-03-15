@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 
-class QuestionAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     search_fields = ['subject', 'content', 'create_date', 'modify_date', 'author_id']
     list_display = ['subject', 'content', 'create_date', 'modify_date', 'author_id']
     list_filter = ['create_date', 'modify_date']
@@ -31,7 +31,7 @@ class RegistrationAdmin(admin.ModelAdmin):
 
     
 
-admin.site.register(Question, QuestionAdmin)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(candidate, CandidateAdmin)

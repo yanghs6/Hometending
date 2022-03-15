@@ -2,20 +2,20 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 
-from ..models import Question, Answer
+from ..models import Post, Answer
 
 
 @login_required(login_url='account:login')
-def vote_question(request, question_id):
+def vote_post(request, post_id):
     """
     pybo 질문추천등록
     """
-    question = get_object_or_404(Question, pk=question_id)
-    if request.user == question.author:
+    post = get_object_or_404(Post, pk=post_id)
+    if request.user == post.author:
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
-        question.voter.add(request.user)
-    return redirect('boardapp:detail', question_id=question.id)
+        post.voter.add(request.user)
+    return redirect('boardapp:detail', post_id=post.id)
 
 
 @login_required(login_url='account:login')
@@ -28,4 +28,4 @@ def vote_answer(request, answer_id):
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         answer.voter.add(request.user)
-    return redirect('boardapp:detail', question_id=answer.question.id)
+    return redirect('boardapp:detail', post_id=answer.post.id)

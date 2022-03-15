@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.utils import timezone
 
 from ..forms import AnswerForm
-from ..models import Question, Answer
+from ..models import Post, Answer
 
 @login_required(login_url='account:login')
 def answer_create(request, question_id):
@@ -12,7 +12,7 @@ def answer_create(request, question_id):
     boardapp 답변 등록
 
     """
-    question = get_object_or_404(Question, pk=question_id)
+    question = get_object_or_404(Post, pk=question_id)
     if request.method == "POST":
         form = AnswerForm(request.POST)
         if form.is_valid():
