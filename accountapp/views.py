@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from .models import HometendUser
-from django.contrib import auth
 
-# Create your views here.
 
 def signup(request):
+    """
+    모델 HometendUser의 회원가입 view
+    
+    이메일, 유저닉네임, 패스워드를 받아 회원가입
+    """
     res_data = None
     if request.method =='POST':
         useremail = request.POST.get('useremail')
@@ -16,6 +18,10 @@ def signup(request):
         
         if HometendUser.objects.filter(username=useremail):
             res_data['error']='이미 가입된 아이디(이메일주소)입니다.'
+        elif len(password) < 6:
+            res_data['error']='비밀번호는 6자 이상 입력해주세요.'
+        elif len(password) > 32:
+            res_data['error']='비밀번호는 32자 이하로 입력해주세요.'
         elif password != re_password:
             res_data['error']='비밀번호가 다릅니다.'
         elif HometendUser.objects.filter(first_name=first_name):

@@ -1,11 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
 
 def index(request):
+    """
+    첫 화면
+    """
     return render(request, 'info/index.html')
 
 def about(reqeust):
+    """
+    팀원 정보
+    """
     context = {'member':
                 [
                     {'name':'YeonSeo Park', 'role':['칵테일 정보', '일러스트 제작'], 'githubid':'YSPARK525', 'email':None},

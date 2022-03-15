@@ -1,11 +1,17 @@
 from django import forms
-from boardapp.models import Question, Answer, Comment
+from boardapp.models import Post, Answer, Comment
 
 
-
-class QuestionForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
+    """
+    모델 Post의 Form
+    
     class Meta:
-        model = Question
+        model: Post
+        fields: subject, content, imgfile
+    """
+    class Meta:
+        model = Post
         fields = ['subject', 'content', 'imgfile']
         labels = {
             'subject': '제목',
@@ -15,6 +21,13 @@ class QuestionForm(forms.ModelForm):
 
 
 class AnswerForm(forms.ModelForm):
+    """
+    모델 Answer의 Form
+    
+    class Meta:
+        model: Answer
+        fields: content
+    """
     class Meta:
         model = Answer
         fields = ['content']
@@ -23,6 +36,13 @@ class AnswerForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    """
+    모델 Comment의 Form
+    
+    class Meta:
+        model: Comment
+        fields: content
+    """
     class Meta:
         model = Comment
         fields = ['content']

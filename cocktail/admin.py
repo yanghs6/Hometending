@@ -1,11 +1,18 @@
 from django.contrib import admin
-from .models import Recipe
+from .models import Cocktail
 
 
-# Register your models here.
-class RecipeAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'glass', 'garnish', 'basesprite', 'ingredient', 'technique']
-    list_display = ['name', 'glass', 'garnish', 'basesprite', 'ingredient', 'technique']
+class CocktailAdmin(admin.ModelAdmin):
+    """
+    모델 Recipe의 admin
+    
+    Attributes:
+        search_fields: name, glass, garnish, basesprite, recipe, technique
+        list_display: name, glass, garnish, basesprite, recipe, technique
+    """
+
+    search_fields = ['name', 'glass', 'garnish', 'basesprite', 'recipe', 'technique']
+    list_display = ['name', 'glass', 'garnish', 'basesprite', 'recipe', 'technique']
 
     
-admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Cocktail, CocktailAdmin)

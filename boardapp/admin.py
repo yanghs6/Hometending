@@ -2,21 +2,45 @@ from django.contrib import admin
 from .models import *
 
 
-class QuestionAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
+    """
+    모델 Post의 admin
+    
+    Attributes:
+        search_fields: subject, content, create_date, modify_date, author_id
+        list_display: subject, content, create_date, modify_date, author_id
+        list_filter: create_date, modify_date
+    """
     search_fields = ['subject', 'content', 'create_date', 'modify_date', 'author_id']
     list_display = ['subject', 'content', 'create_date', 'modify_date', 'author_id']
     list_filter = ['create_date', 'modify_date']
 
     
 class AnswerAdmin(admin.ModelAdmin):
-    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'question_id']
-    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'question_id']
+    """
+    모델 Answer의 admin
+    
+    Attributes:
+        search_fields: content, create_date, modify_date, author_id, post_id
+        list_display: content, create_date, modify_date, author_id, post_id
+        list_filter: create_date, modify_date
+    """
+    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'post_id']
+    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'post_id']
     list_filter = ['create_date', 'modify_date']
 
 
 class CommentAdmin(admin.ModelAdmin):
-    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'question_id']
-    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'question_id']
+    """
+    모델 Comment의 admin
+    
+    Attributes:
+        search_fields: content, create_date, modify_date, author_id, answer_id, post_id
+        list_display: content, create_date, modify_date, author_id, answer_id, post_id
+        list_filter: create_date, modify_date
+    """
+    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'post_id']
+    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'post_id']
     list_filter = ['create_date', 'modify_date']
 
     
@@ -29,9 +53,9 @@ class RegistrationAdmin(admin.ModelAdmin):
     search_fields = ['fname', 'lname', 'dob']
     list_display = ['fname', 'lname', 'dob']
 
-    
 
-admin.site.register(Question, QuestionAdmin)
+
+admin.site.register(Post, PostAdmin)
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(candidate, CandidateAdmin)

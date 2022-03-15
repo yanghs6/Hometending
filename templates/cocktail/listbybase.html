@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block css %}
-h3 {
+h2 {
   color: white;
   text-align : center;
 }
 img {
+  width : 180px;
   height : 180px;
   margin : 10px;
   padding : 10px;
@@ -15,24 +16,27 @@ img {
 td{
   vertical-align: middle;
 }
+a.basename {
+  color: white;
+  text-decoration-line : none;
+  text-decoration : none;
+}
+a:hover { text-decoration: none; }
 {% endblock %}
 
 {% block content %}
-
 {% load static %}
-
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="2"><h3>{{base_name}}</h3></th>
+      <th scope="col"><h2>{{base_name}}</h2></th>
     </tr>
   </thead>
   <tbody>
     {% for menu in lbyb %}
     <tr class="table-info">
-      <td><img src="/static/images/cocktail/{{menu.id}}.jpg"></th>
-      <td><a href="/cocktail/{{menu.id}}/" style="color: white;">{{menu.name}}</a></th>
+      <td><img src="/static/images/cocktail/{{menu.id}}.jpg"><a class="basename" href="/cocktail/{{menu.id}}/"style="color: white;">{{menu.name}}</a></td>
     </tr>
     {% endfor %}
   </tbody>
