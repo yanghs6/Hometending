@@ -10,7 +10,6 @@ from ..models import Post, Answer
 def answer_create(request, post_id):
     """
     boardapp 답변 등록
-
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.method == "POST":

@@ -2,8 +2,6 @@ from .views import base_views, post_views, answer_views, comment_views, vote_vie
 from django.urls import path
 
 
-
-
 app_name = 'boardapp'
 
 urlpatterns = [
@@ -33,6 +31,4 @@ urlpatterns = [
     # vote_views.py
     path('vote/post/<int:post_id>/', vote_views.vote_post, name='vote_post'),
     path('vote/answer/<int:answer_id>/', vote_views.vote_answer, name='vote_answer'),
-
 ]
-

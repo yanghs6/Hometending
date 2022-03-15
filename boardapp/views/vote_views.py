@@ -8,7 +8,7 @@ from ..models import Post, Answer
 @login_required(login_url='account:login')
 def vote_post(request, post_id):
     """
-    pybo 질문추천등록
+    질문추천등록
     """
     post = get_object_or_404(Post, pk=post_id)
     if request.user == post.author:
@@ -21,7 +21,7 @@ def vote_post(request, post_id):
 @login_required(login_url='account:login')
 def vote_answer(request, answer_id):
     """
-    pybo 답글추천등록
+    답글추천등록
     """
     answer = get_object_or_404(Answer, pk=answer_id)
     if request.user == answer.author:
