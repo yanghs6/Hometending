@@ -9,14 +9,14 @@ class PostAdmin(admin.ModelAdmin):
 
     
 class AnswerAdmin(admin.ModelAdmin):
-    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'question_id']
-    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'question_id']
+    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'post_id']
+    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'post_id']
     list_filter = ['create_date', 'modify_date']
 
 
 class CommentAdmin(admin.ModelAdmin):
-    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'question_id']
-    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'question_id']
+    search_fields = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'post_id']
+    list_display = ['content', 'create_date', 'modify_date', 'author_id', 'answer_id', 'post_id']
     list_filter = ['create_date', 'modify_date']
 
     
