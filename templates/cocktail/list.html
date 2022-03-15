@@ -19,6 +19,10 @@
             height: 70vw;
         }
     }
+    h2 {
+        text-align: center;
+        color: white;
+    }
     .n{
         display: flex;
         justify-content: space-around;
@@ -34,7 +38,9 @@
 </style>
 
 <div class="container my-3">
-
+    
+    <h2>Cocktail List</h2>
+    
     <div class="row justify-content-between my-3">
         <div class="col-2">
         </div>
@@ -45,9 +51,6 @@
             </div>
         </div>
     </div>
-
-    <h2 style="color:white">Cocktail List</h2>
-
 
     {% for menuset in cocktail_list %}
     <div class="row">
