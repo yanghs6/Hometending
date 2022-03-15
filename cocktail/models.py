@@ -1,6 +1,6 @@
 from django.db import models
 
-class Recipe(models.Model):
+class Cocktail(models.Model):
     name=models.CharField(max_length=50)
     glass=models.CharField(max_length=50)
     garnish=models.CharField(max_length=50)

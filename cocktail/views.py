@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import Recipe
+from .models import Cocktail
 from django.db.models import Q
 
 
 def list(request):
     # 조회
-    cocktail_alllist = Recipe.objects.order_by('pk')
+    cocktail_alllist = Cocktail.objects.order_by('pk')
     kw = request.GET.get('kw', '')  # 검색어
     # 검색
     if kw:
@@ -20,18 +20,18 @@ def list(request):
     context = {'cocktail_list':cocktail_list, 'kw': kw}
     return render(request, "cocktail/list.html", context)
 
-def recipes(request,cocktail_id):
-    recipe=Recipe.objects.get(id=cocktail_id)
-    context = {'recipe': recipe}
-    return render(request, "cocktail/recipes.html", context)
+def cocktails(request,cocktail_id):
+    cocktail=Cocktail.objects.get(id=cocktail_id)
+    context = {'cocktail': cocktail}
+    return render(request, "cocktail/cocktails.html", context)
 
 def basesprite(request):
-    base_list=Recipe.objects.order_by('basesprite').values('basesprite').distinct()
+    base_list=Cocktail.objects.order_by('basesprite').values('basesprite').distinct()
     context = {'base_list': base_list}
     return render(request, "cocktail/basesprite.html", context)
 
 def listbybase(request,base_name):
-    lbyb=Recipe.objects.filter(basesprite=base_name)
+    lbyb=Cocktail.objects.filter(basesprite=base_name)
     context = {'lbyb': lbyb,'base_name':base_name}
     return render(request, "cocktail/listbybase.html", context)
 
